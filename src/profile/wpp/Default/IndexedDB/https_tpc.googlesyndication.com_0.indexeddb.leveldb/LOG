@@ -1,0 +1,5 @@
+2020/07/05-09:16:40.805 2573 Reusing MANIFEST /home/rodrigo/Projetos/wppbot-coltech-master/src/profile/wpp/Default/IndexedDB/https_tpc.googlesyndication.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/05-09:16:44.363 25cc Level-0 table #5: started
+2020/07/05-09:16:44.407 25cc Level-0 table #5: 360 bytes OK
+2020/07/05-09:16:44.497 25cc Delete type=0 #3
+2020/07/05-09:16:44.497 25cc Manual compaction at level-0 from (begin) .. (end); will stop at (end)
