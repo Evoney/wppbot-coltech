@@ -142,26 +142,19 @@ try:
                             enviar_saudacao = getTimePass(ultima_mensagem_bot, 'bot')
                                 
 
-                
-                #erro aqui, ele não pega numeros do tipo +55 42 42
                 id = bot.driver.find_element_by_class_name("DP7CM").get_attribute('innerText')
             
-                print(id)
-
                 client = recupera_cliente_id(Clientes, id)
-               
-               
+                  
                 atualiza_listas_clientes(Clientes, ClientesEsperando, client)
-
-
-                print(f'client: {client}')        
+     
                 print(f'tem_nova_mensagem: {tem_nova_mensagem}')
                 print(f'enviar_saudacao: {enviar_saudacao}')        
                 if(tem_nova_mensagem == True):
                     time.sleep(3)
 
                     client = recupera_cliente_id(Clientes, id)
-                    print(f'client: {client}')
+        
                     if (client == None):
                         client = Cliente(id)
                         Clientes.append(client)
@@ -172,14 +165,12 @@ try:
                     elif (client.estado == 1):
                         cliente_esperando_atendimento_humano = False
 
-                   
                     nome_cliente = " "
                     if (cliente_esperando_atendimento_humano  == False):
                         if (enviar_saudacao == True):
                             ultima_mensagem = bot.saudacao()
                             nome_cliente = bot.escuta(ultima_mensagem)
                         
-
                         print(f'nome_cliente: {nome_cliente}')
                         if (nome_cliente != None):
                            
@@ -201,11 +192,13 @@ try:
                                     bot.menu(nome_cliente) 
                                 else:
                                     
-                                    #falta pegar a informação que o cliente digitou
-                                    #criar função de coleta.
-                                   #opcao = bot.driver.find_elements_by_class_name('_3Whw5').get_attribute('innerText')
-                                    
-                                    
+                                   
+                                    ultima_mensagem = mensagens[num_mensagens - 1].find_element_by_class_name("_3Whw5").get_attribute('innerText')
+
+                                    print(f'ultima_mensagem:{ultima_mensagem}')
+
+                                    opcao = ultima_mensagem
+
                                     if opcao == "0" or "zero" in opcao or "ZERO" in opcao or "Zero" in opcao:
                                         bot.menu()
                                     elif opcao == "01" or opcao == "1" or "um" in opcao or 'UM' in opcao or 'Um' in opcao or "Quem somos" in opcao or "quem somos" in opcao or "quem Somos" in opcao or "História" in opcao or "história" in opcao or "Historia" in opcao or "historia" in opcao:
@@ -217,10 +210,8 @@ try:
                                     elif opcao == "04" or opcao == "4" or "quatro" in opcao or 'QUATRO' in opcao or 'Quatro' in opcao or "Contato" in opcao or "contato" in opcao or "contatos" in opcao or "Contatos" in opcao:
                                         bot.contato()
                                     elif opcao == "05" or opcao == "5" or "cinco" in opcao or 'CINCO' in opcao or 'Cinco' in opcao or "atendente" in opcao or "Atendente" in opcao or "Falar com atendente" in opcao or "falar com atendente" in opcao or "Falar com atendente (agendamento)" in opcao or "falar com atendente" in opcao or "Falar com atendente" in opcao or "falar com atendente" in opcao:
-                                        bot.atendimento()
-                                       
+                                        bot.atendimento()   
                                         client.estado = 0
-                                        
                                         ClientesEsperando.append(client)
 
                 

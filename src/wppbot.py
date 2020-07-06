@@ -121,17 +121,18 @@ class wppbot:
         self.botao_enviar.click()
         time.sleep(2)
 
-    #verificar
+
     def servicos(self):
         servicos = self.dir_path + '/assets/Carta de Serviços.pdf'
         self.driver.find_element_by_css_selector('span[data-icon="clip"]').click()
         attach = self.driver.find_element_by_css_selector('input[type="file"]')
         attach.send_keys(servicos)
         time.sleep(2)
-        self.driver.find_element_by_css_selector('span[data-icon="send-light"]').click()
+        self.botao_enviar = self.driver.find_element_by_class_name("_3y5oW")
+        self.botao_enviar.click()
         time.sleep(2)
 
-    #vrificar
+
     def atendimento(self):
         self.caixa_de_mensagem = self.driver.find_element_by_xpath("//*[@id='main']/footer/div[1]/div[2]/div/div[2]")
         desmarcar = "Atendimento de segunda a sexta-feira das 8h às 18h. Digite sua mensagem e " \
@@ -141,6 +142,7 @@ class wppbot:
         self.botao_enviar = self.driver.find_element_by_class_name("_1U1xa")
         self.botao_enviar.click()
         time.sleep(2)
+      
 
     def contato(self):
         self.caixa_de_mensagem = self.driver.find_element_by_xpath("//*[@id='main']/footer/div[1]/div[2]/div/div[2]")
@@ -157,6 +159,7 @@ class wppbot:
         self.botao_enviar = self.driver.find_element_by_class_name("_1U1xa")
         self.botao_enviar.click()
         time.sleep(2)
+    
 
     def invalido(self):
         self.caixa_de_mensagem = self.driver.find_element_by_xpath("//*[@id='main']/footer/div[1]/div[2]/div/div[2]")
